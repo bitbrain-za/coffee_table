@@ -1,0 +1,22 @@
+# Packages
+*.apk
+
+# Tokens
+*.token
+
+# Individual Files
+secrets.py
+
+# Databases
+*.db
+
+# Logs
+*.log
+
+# Directories
+.cloud/
+tts/
+
+# Keys
+*.ppk
+id_rsa
