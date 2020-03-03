@@ -244,7 +244,6 @@ class Coordinator:
   def btn_volume_held(self):
     self.btnvol_was_held = True
     self.strip.blink(0, 0, 255)
-    # self.switch_mode()
 
   def btn_volume_release(self):
     if not self.btnvol_was_held:
@@ -258,43 +257,11 @@ class Coordinator:
 
   def volume_up(self):
     self.strip.set_temperature(self.volume_control.percent())
-    # self._mqtt_client.send_message("vol", "up")
     self.receiver.raw('MVLUP')
-    # if(self.tv_mode):
-    #   self.remote.hold_button(Key.TV_VOL_UP, 0.3)
-    # else:
-    #   self.remote.hold_button(Key.AMP_VOL_UP, 0.3)
 
   def volume_down(self):
     self.strip.set_temperature(self.volume_control.percent())
-    # self._mqtt_client.send_message("vol", "down")
     self.receiver.raw('MVLDOWN')
-    # if(self.tv_mode):
-    #   self.remote.hold_button(Key.TV_VOL_DOWN, 0.3)
-    # else:
-    #   self.remote.hold_button(Key.AMP_VOL_DOWN, 0.3)
-
-  def volume_power(self):
-    self._mqtt_client.send_message("amp", "short")
-
-    # if(self.tv_mode):
-    #   self.remote.press_button(Key.TV_POWER, 2)
-    #   self.device_state_tv = not self.device_state_tv
-    # else:
-    #   self.remote.press_button(Key.AMP_POWER, 2)
-    #   self.device_state_amp = not self.device_state_amp
-
-  def amp_change_source(self):
-    if(self.source == 1):
-      self.remote.press_button(Key.AMP_DVD, 2)
-    if(self.source == 2):
-      self.remote.press_button(Key.AMP_VIDEO1, 2)
-    if(self.source == 3):
-      self.remote.press_button(Key.AMP_VIDEO2, 2)
-    if(self.source == 4):
-      self.remote.press_button(Key.AMP_AUX, 2)
-      self.source = 0
-    self.source += 1
 
 ########## Aircon ##########
 
