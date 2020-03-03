@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import sys
 import logging
 import threading
@@ -23,7 +22,6 @@ class RFID:
     self._callback_mutex = threading.RLock()
 
     self._logger.debug("Starting reader")
-    self.send_tag("Service Started")
 
   def send_tag(self, content):
     with self._callback_mutex:
@@ -38,7 +36,7 @@ class RFID:
     if self._thread is not None:
         return False
 
-    self.running = True;
+    self.running = True
     self._thread_terminate = False
     self._thread = threading.Thread(target=self._loop)
     self._thread.daemon = True
@@ -52,33 +50,33 @@ class RFID:
       ## Get the character from the HID
       buffer = self.fp.read(8)
       for c in buffer:
-        if ord(c) > 0:
+        if c > 0:
           ##  40 is carriage return which signifies
           ##  we are done looking for characters
-          if int(ord(c)) == 40:
+          if c == 40:
             self.send_tag(self.ss)
             self._logger.debug("Sending tag" + self.ss)
             self.ss = ""
-            break;
+            break
           ##  If we are shifted then we have to
           ##  use the hid2 characters.
           if self.shift:
             ## If it is a '2' then it is the shift key
-            if int(ord(c)) == 2 :
+            if c == 2 :
               self.shift = True
             ## if not a 2 then lookup the mapping
             else:
-              self.ss += self.hid2[ int(ord(c)) ]
+              self.ss += self.hid2[ c ]
               self.shift = False
           ##  If we are not shifted then use
           ##  the hid characters
           else:
             ## If it is a '2' then it is the shift key
-            if int(ord(c)) == 2 :
+            if c == 2 :
               self.shift = True
             ## if not a 2 then lookup the mapping
             else:
-              self.ss += self.hid[ int(ord(c)) ]
+              self.ss += self.hid[ c ]
     self.running = False
 
   @property
@@ -88,7 +86,7 @@ class RFID:
   @on_tag.setter
   def on_tag(self, func):
     with self._callback_mutex:
-      self._on_tag = func;
+      self._on_tag = func
 
 
   
