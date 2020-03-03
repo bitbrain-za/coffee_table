@@ -234,7 +234,7 @@ class Coordinator:
     self.button_amp_power = Button(HAL.VOL_C, pull_up = True)
     self.button_amp_power.hold_time = Config.BTN_HOLD_TIME
     self.button_amp_power.when_held      = self.btn_volume_held
-    # self.button_amp_power.when_released  = self.btn_volume_release
+    self.button_amp_power.when_released  = self.btn_volume_release
 
     self.volume_control = RotaryEncoder(HAL.VOL_A, HAL.VOL_B, maximum=60, minimum=0, initial=30, step_size=1)
     self.volume_control.on_clockwise = self.volume_up
@@ -245,11 +245,12 @@ class Coordinator:
     self.btnvol_was_held = True
     self.strip.blink(0, 0, 255)
     # self.switch_mode()
-    # self._mqtt_client.send_message("btnVol", "click")
 
   def btn_volume_release(self):
     if not self.btnvol_was_held:
-      self.volume_power()
+      self._mqtt_client.send_message("amp", "short")
+    else:
+      self._mqtt_client.send_message("amp", "long")
     self.btnvol_was_held = False
 
   def switch_mode(self):
@@ -274,12 +275,14 @@ class Coordinator:
     #   self.remote.hold_button(Key.AMP_VOL_DOWN, 0.3)
 
   def volume_power(self):
-    if(self.tv_mode):
-      self.remote.press_button(Key.TV_POWER, 2)
-      self.device_state_tv = not self.device_state_tv
-    else:
-      self.remote.press_button(Key.AMP_POWER, 2)
-      self.device_state_amp = not self.device_state_amp
+    self._mqtt_client.send_message("amp", "short")
+
+    # if(self.tv_mode):
+    #   self.remote.press_button(Key.TV_POWER, 2)
+    #   self.device_state_tv = not self.device_state_tv
+    # else:
+    #   self.remote.press_button(Key.AMP_POWER, 2)
+    #   self.device_state_amp = not self.device_state_amp
 
   def amp_change_source(self):
     if(self.source == 1):
