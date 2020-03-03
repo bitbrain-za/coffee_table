@@ -50,7 +50,7 @@ class Coordinator:
     self.handler = RotatingFileHandler(filename='/home/pi/app/coffee_table.log', mode='a', maxBytes=20*1024*1024, backupCount=2, encoding=None, delay=0)
     self.handler.setFormatter(self.formatter)
     self.logger = logging.getLogger("coffee_table")
-    self.logger.setLevel(logging.WARN)
+    self.logger.setLevel(logging.DEBUG)
     self.logger.addHandler(self.handler)
     self.logger.debug("Starting coordinator Service")
 
@@ -257,11 +257,11 @@ class Coordinator:
 
   def volume_up(self):
     self.strip.set_temperature(self.volume_control.percent())
-    self.receiver.raw('MVLUP')
+    self.receiver.send('MVLUP')
 
   def volume_down(self):
     self.strip.set_temperature(self.volume_control.percent())
-    self.receiver.raw('MVLDOWN')
+    self.receiver.send('MVLDOWN')
 
 ########## Aircon ##########
 
