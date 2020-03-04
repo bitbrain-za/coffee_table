@@ -1,0 +1,27 @@
+{
+	"One": {"mark": 563, "space":1688},
+	"Zero": {"mark": 563, "space":563},
+	"Header": {"mark": 4500, "space":4500},
+	"Gap": 108000,
+
+	"pre_data_bytes": 2,
+	"pre_data" : ["E0E0"],
+
+	"code_length": 2,
+
+	"Keys":
+	[
+		{"name":"KEY_POWER", 		"id":0,  "code":"40BF"},
+		{"name":"KEY_VOL_UP", 		"id":1,  "code":"E01F"},
+		{"name":"KEY_MUTE", 		"id":2,  "code":"F00F"},
+		{"name":"KEY_VOL_DOWN", 	"id":3,  "code":"D02F"},
+		{"name":"KEY_PLAY", 		"id":4,  "code":"E21D"},
+		{"name":"KEY_PAUSE", 		"id":5,  "code":"52AD"},
+		{"name":"KEY_STOP", 		"id":6,  "code":"629D"},
+		{"name":"KEY_UP", 			"id":7,  "code":"06F9"},
+		{"name":"KEY_DOWN", 		"id":8,  "code":"8679"},
+		{"name":"KEY_LEFT", 		"id":9,  "code":"A659"},
+		{"name":"KEY_RIGHT", 		"id":10, "code":"46B9"},
+		{"name":"KEY_ENTER", 		"id":11, "code":"16E9"}
+	]
+}

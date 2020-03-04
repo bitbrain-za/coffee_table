@@ -1,0 +1,29 @@
+{
+	"One": {"mark": 563, "space":1688},
+	"Zero": {"mark": 563, "space":563},
+	"Header": {"mark": 9000, "space":4500},
+	"Repeat": {"mark": 9000, "space":2250},
+	"pulse_trail": 563,
+	"Gap": 108000,
+
+	"pre_data_bytes": 1,
+	"pre_data" : "1D",
+
+	"code_length": 3,
+
+	"Keys":
+	[
+		{"name":"KEY_POWER", 	"id":0,  "code": "00B946"},
+		{"name":"KEY_VOL_UP", 	"id":1,  "code": "00D926"},
+		{"name":"KEY_MUTE", 	"id":2,  "code": "0039C6"},
+		{"name":"KEY_VOL_DOWN", "id":3,  "code": "0059A6"},
+		{"name":"KEY_DVD", 		"id":4,  "code": "C001FE"},
+		{"name":"KEY_AUX", 		"id":5,  "code": "00C936"},
+		{"name":"KEY_CD", 		"id":6,  "code": "0049B6"},
+		{"name":"KEY_TAPE", 	"id":7,  "code": "00A956"},
+		{"name":"KEY_TUNER", 	"id":8,  "code": "008976"},
+		{"name":"KEY_VIDEO1", 	"id":9,  "code": "0040BF"},
+		{"name":"KEY_VIDEO2", 	"id":10, "code": "006996"},
+		{"name":"KEY_BASS", 	"id":11, "code": "40EA15"}
+	]
+}
